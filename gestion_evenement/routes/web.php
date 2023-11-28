@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route Inscription
 Route::get('/register',[RegisterController::class, 'create'])->name('register');
 Route::post('/register/user',[RegisterController::class, 'store'])->name('registerUser');
+// Route Connexion
+Route::get('/login',[LoginController::class, 'create'])->name('login');
+Route::post('/login/user',[LoginController::class, 'store'])->name('loginUser');
