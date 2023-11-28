@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User;
 
 class LoginController extends Controller
 {
@@ -14,7 +14,6 @@ class LoginController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -28,52 +27,28 @@ class LoginController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        try {
-            $credentials = $request->validate([
-                'email' => ['required', 'email'],
-                'motdepasse' => ['required'],
-            ]);
-    
-            if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
-    
-                return redirect()->back()->with('statut', 'Connexion réussie');
-            }
-    
-        } catch (\Exception $e) {
-            dd($e->getMessage());
+        public function store(Request $request)
+        {
+                $credentials = $request->validate([
+                    'email' => ['required', 'email'],
+                    'password' => ['required'],
+                ]);
+                
+                // dd(auth()->attempt($credentials));['email' => $request->email, 'password' => $request->password]
+                if (Auth::attempt($credentials)) {
+                    // $request->session()->regenerate();
+                    return 'bonjour';
+                    
+                    // return redirect()->back()->with('statut', 'Connexion réussie');
+                }
+                else{
+                    return 'error';
+                }
+                
         }
     }
     
-
-     //       public function store(Request $request) 
-    //       {
-    //         try {
-
-    //           $credentials = $request->validate([
-    //               'email' => ['required', 'email'],
-    //               'motdepasse' => ['required'],
-    //           ]);
-        
-    //           if (Auth::attempt($credentials)) {
-    //               $request->session()->regenerate();
-        
-    //               return redirect()-> back()->with('status', 'Connexion Reussie');
-    //           }
-        
-    //           return back()->withErrors([
-    //               'email' => 'The provided credentials do not match our records.',
-    //           ])->onlyInput('email');
-
-    //       } catch (\Exception $e) {
-    //         dd($e->getMessage());
-        
-    //     }
-    // }
-
-
+    
     /**
      * Display the specified resource.
      */
@@ -105,5 +80,5 @@ class LoginController extends Controller
     // {
     //     //
     // }
-    
-}
+
+

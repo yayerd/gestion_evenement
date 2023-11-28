@@ -36,12 +36,12 @@ class RegisterController extends Controller
                 'prenom' => ['required', 'string', 'between:3,35'],
                 'nom' => ['required', 'string', 'between:2,25'],
                 'email' => ['required', 'email', 'unique:users'],
-                'motdepasse' => ['required', 'string', 'min:8'],
-                'motdepasseconf' => ['required', 'same:motdepasse']
+                'password' => ['required', 'string', 'min:8'],
+                'passwordconf' => ['required', 'same:password']
 
             ]);
 
-            $validated['motdepasse'] = Hash::make($validated['motdepasse']);
+            $validated['password'] = Hash::make($validated['password']);
 
             // dd($validated);
             $user = User::create($validated);
