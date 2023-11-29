@@ -42,10 +42,11 @@ class RegisterController extends Controller
             ]);
 
             $validated['password'] = Hash::make($validated['password']);
-            return 'Inscription reussie';
-
+            
             // dd($validated);
             $user = User::create($validated);
+            $user->save();
+            return 'Inscription reussie';
         } catch (\Exception $e) {
             dd($e->getMessage());
         }

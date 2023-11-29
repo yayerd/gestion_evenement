@@ -36,3 +36,5 @@ Route::post('/register/asso',[AssoRegisterController::class, 'store'])->name('re
 // Route Connexion
 Route::get('/loginform',[AssoLoginController::class, 'create'])->name('loginformasso');
 Route::post('/login/asso',[AssoLoginController::class, 'store'])->name('loginAsso');
+
+// Evenement

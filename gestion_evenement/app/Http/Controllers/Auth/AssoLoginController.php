@@ -28,20 +28,6 @@ class AssoLoginController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'email' => ['required', 'email'],
-    //         'password' => ['required'],
-    //     ]);
-    //     dd( Auth::attempt($credentials) );
-    //     if (Auth::attempt($credentials)) {
-    //         return 'Connexion reussie';
-    //         // guard('association')-> return redirect()->back()->with('statut', 'Connexion réussie');
-    //     } else {
-    //         return 'error';
-    //     }
-    // }
 
     public function store(Request $request) {
         $request->validate([

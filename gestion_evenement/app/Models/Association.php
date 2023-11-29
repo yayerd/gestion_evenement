@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Association as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Evenement;
 
 class Association extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function evenements(){
+        return $this->hasmany(Evenement::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

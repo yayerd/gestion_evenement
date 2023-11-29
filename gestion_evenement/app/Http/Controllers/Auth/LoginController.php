@@ -34,7 +34,6 @@ class LoginController extends Controller
                     'password' => ['required'],
                 ]);
                 
-                // dd(auth()->attempt($credentials));['email' => $request->email, 'password' => $request->password]
                 if (Auth::attempt($credentials)) {
                     // $request->session()->regenerate();
                     return 'Connexion reussie';
