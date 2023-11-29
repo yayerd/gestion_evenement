@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Association;
 use Illuminate\Support\Facades\Auth;
 
 class AssoLoginController extends Controller
@@ -27,19 +28,35 @@ class AssoLoginController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-        dd( Auth::attempt($credentials) );
-        if (Auth::guard('association')->attempt($credentials)) {
-            return 'Connexion reussie';
-            // return redirect()->back()->with('statut', 'Connexion réussie');
+    // public function store(Request $request)
+    // {
+    //     $credentials = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required'],
+    //     ]);
+    //     dd( Auth::attempt($credentials) );
+    //     if (Auth::attempt($credentials)) {
+    //         return 'Connexion reussie';
+    //         // guard('association')-> return redirect()->back()->with('statut', 'Connexion réussie');
+    //     } else {
+    //         return 'error';
+    //     }
+    // }
+
+    public function store(Request $request) {
+        $request->validate([
+            'email' => ['required','email'],
+            'password' => ['required']
+        ]); 
+        $check = $request->only('email', 'password');
+
+        // dd(Auth::guard('association')->attempt($check));
+        if (Auth::guard('association')->attempt($check)) {
+           return 'Connexion Association reussie';
         } else {
-            return 'error';
+            return 'Erreur de connexion';
         }
+            // return redirect();
     }
 
     /**

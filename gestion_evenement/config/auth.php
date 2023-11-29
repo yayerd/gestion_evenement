@@ -18,6 +18,10 @@ return [
         'passwords' => 'users',
     ],
 
+    // 'defaults' => [
+    //     'guard' => 'eloquent',
+    //     'model' =>App\Models\Association::class,
+    // ],
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -40,14 +44,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'association' => [
+             'driver'=> 'session',
+             'provider' => 'associations',
+        ]
     ],
 
-    'guards' => [
-        'association' => [
-            'driver' => 'session',
-            'provider' => 'assos',
-        ],
-    ],
+    // 'guards' => [
+    //     'association' => [
+    //         'driver' => 'session',
+    //         'provider' => 'assos',
+    //     ],
+    // ],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -70,6 +78,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'associations' =>[
+            'driver' => 'eloquent',
+            'model' => App\Models\Association::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -77,12 +89,12 @@ return [
         // ],
     ],
 
-    'providers' => [
-        'assos' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Association::class,
-        ],
-    ],
+    // 'providers' => [
+    //     'assos' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\Models\Association::class,
+    //     ],
+    // ],
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -110,12 +122,19 @@ return [
             'throttle' => 60,
         ],
 
-        'assos' => [
-            'provider' => 'assos',
+           'associations' => [
+            'provider' => 'associations',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // 'assos' => [
+        //     'provider' => 'assos',
+        //     'table' => 'password_reset_tokens',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*

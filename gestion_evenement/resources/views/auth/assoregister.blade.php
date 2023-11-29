@@ -17,7 +17,7 @@
 
     <div class="flex items-center justify-center h-screen">
 
-        <form class=" border-solid border-2 rounded-md p-6 shadow-lg" action="/register/asso" method="POST" novalidate>
+        <form class=" border-solid border-2 rounded-md p-6 shadow-lg" action="/register/asso" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <header class="bg-white shadow">
                 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -65,6 +65,29 @@
                                 class="form-input px-2 block w-full rounded-md border-0 py-1.5 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
+                    
+                    <div class="sm:col-span-3">
+                        <label for="date_creation" class="block text-sm font-medium leading-6 text-gray-900">Date de création</label>
+                        <div class="mt-2">
+                            <input type="date" name="date_creation" id="date_creation" required
+                                class="form-input px-2 block w-full rounded-md border-0 py-1.5 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="logo" class="block text-sm font-medium leading-6 text-gray-900">Logo</label>
+                        <div class="mt-2">
+                            <input type="file" name="logo" id="logo" required
+                                class="form-input px-2 block w-full rounded-md border-0 py-1.5 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="slogan" class="block text-sm font-medium leading-6 text-gray-900">Slogan</label>
+                        <div class="mt-2">
+                            <input type="text" name="slogan" id="slogan" required
+                                class="form-input px-2 block w-full rounded-md border-0 py-1.5 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="mt-6 flex items-center justify-center gap-x-6">
