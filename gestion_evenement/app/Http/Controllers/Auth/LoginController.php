@@ -37,7 +37,8 @@ class LoginController extends Controller
                 // dd(auth()->attempt($credentials));['email' => $request->email, 'password' => $request->password]
                 if (Auth::attempt($credentials)) {
                     // $request->session()->regenerate();
-                    return 'bonjour';
+                    return 'Connexion reussie';
+
                     
                     // return redirect()->back()->with('statut', 'Connexion réussie');
                 }

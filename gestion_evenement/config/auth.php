@@ -42,6 +42,12 @@ return [
         ],
     ],
 
+    'guards' => [
+        'association' => [
+            'driver' => 'session',
+            'provider' => 'assos',
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -71,6 +77,12 @@ return [
         // ],
     ],
 
+    'providers' => [
+        'assos' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Association::class,
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -97,6 +109,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'assos' => [
+            'provider' => 'assos',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
     ],
 
     /*
@@ -111,5 +130,5 @@ return [
     */
 
     'password_timeout' => 10800,
-
+    
 ];

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Association;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class AssoRegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // 
+        //
     }
 
     /**
@@ -22,7 +22,7 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.assoregister');
     }
 
     /**
@@ -33,8 +33,7 @@ class RegisterController extends Controller
         try {
 
             $validated = $request->validate([
-                'prenom' => ['required', 'string', 'between:3,35'],
-                'nom' => ['required', 'string', 'between:2,25'],
+                'nom_asso' => ['required', 'string', 'between:2,255'],
                 'email' => ['required', 'email', 'unique:users'],
                 'password' => ['required', 'string', 'min:8'],
                 'passwordconf' => ['required', 'same:password']
@@ -45,7 +44,7 @@ class RegisterController extends Controller
             return 'Inscription reussie';
 
             // dd($validated);
-            $user = User::create($validated);
+            $association = Association::create($validated);
         } catch (\Exception $e) {
             dd($e->getMessage());
         }

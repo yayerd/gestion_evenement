@@ -22,11 +22,35 @@
                     @auth
                         <a href="{{ url('/home') }}" class="text-2xl font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-2xl font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        {{-- @if (Route::has('register')) --}}
-                            <a href="{{ route('register') }}" class=" text-2xl ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        {{-- @endif --}}
+                    <table>
+                         {{-- @if (Route::has('register')) --}}
+                        <tr>
+                            <td>
+                                <a href="{{ route('login') }}" class="text-2xl font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in User</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('registerformasso') }}" class="text-2xl ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register Asso</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="{{ route('loginformasso') }}" class="text-2xl font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in Asso</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('register') }}" class="text-2xl ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register User</a>
+                            </td>
+                        </tr>
+                           {{-- @endif --}}
+                    </table>
+                    
+                    
+                        {{-- <a href="{{ route('login') }}" class="text-2xl font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in User</a>
+                        <a href="{{ route('registerformasso') }}" class=" text-2xl ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register Asso</a> --}}
+                        <br><br>
+                       
+                        {{-- <a href="{{ route('loginformasso') }}" class="text-2xl font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in Asso</a>
+                        <a href="{{ route('register') }}" class=" text-2xl ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register User </a> --}}
+                     
                     @endauth
                 </div>
             {{-- @endif --}}

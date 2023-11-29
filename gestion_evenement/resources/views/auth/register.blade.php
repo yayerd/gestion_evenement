@@ -159,7 +159,7 @@
 
 <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 text-center text-sky-700">S'inscrire sur Gestion Evenement</h1>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 text-center text-sky-700">Inscription Client</h1>
       </div>
     </header>
         <div class=" space-x-8 border-b border-gray-900/10 pb-12">

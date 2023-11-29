@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class RegisterController extends Controller
+class AssoLoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // 
+        //
     }
 
     /**
@@ -22,7 +21,7 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.assologin');
     }
 
     /**
@@ -30,27 +29,17 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-
-            $validated = $request->validate([
-                'prenom' => ['required', 'string', 'between:3,35'],
-                'nom' => ['required', 'string', 'between:2,25'],
-                'email' => ['required', 'email', 'unique:users'],
-                'password' => ['required', 'string', 'min:8'],
-                'passwordconf' => ['required', 'same:password']
-
-            ]);
-
-            $validated['password'] = Hash::make($validated['password']);
-            return 'Inscription reussie';
-
-            // dd($validated);
-            $user = User::create($validated);
-        } catch (\Exception $e) {
-            dd($e->getMessage());
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        dd( Auth::attempt($credentials) );
+        if (Auth::guard('association')->attempt($credentials)) {
+            return 'Connexion reussie';
+            // return redirect()->back()->with('statut', 'Connexion réussie');
+        } else {
+            return 'error';
         }
-
-        // return ;
     }
 
     /**
