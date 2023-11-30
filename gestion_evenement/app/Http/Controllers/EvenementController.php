@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Association;
 use App\Models\Evenement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EvenementController extends Controller
 {
@@ -12,7 +14,8 @@ class EvenementController extends Controller
      */
     public function index()
     {
-        //
+        // return view('evenements.ajouter');
+
     }
 
     /**
@@ -20,7 +23,7 @@ class EvenementController extends Controller
      */
     public function create()
     {
-        //
+        return view('evenements.ajouter');
     }
 
     /**
@@ -28,7 +31,36 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'libelle' => 'required|max:255',
+            'image' => 'required',
+            'description' => 'required',
+            'date_evenement' => 'required',
+            'statut' => 'required',
+            'date_limite' => 'required',
+
+        ]);
+        $evenement = new Evenement();
+        $evenement->libelle = $request->libelle;
+        $evenement->date_evenement = $request->date_evenement;
+        $evenement->description = $request->description;
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            $evenement['image'] = $filename;
+        }
+
+        $evenement->statut = $request->statut;
+        $evenement->date_limite = $request->date_limite;
+        // Attribuer l'id de l'association dans la table évènement 
+        //  Un guard avait été créé dans auth.php car association est un second type de user
+        $evenement->association_id=Auth::guard('association')->user()->id;
+         // dd($evenement);
+        $evenement->save();
+        // return "Evenement publié";
+        return redirect()->route('listerevenement');
+
     }
 
     /**

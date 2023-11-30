@@ -84,6 +84,7 @@ class AssoRegisterController extends Controller
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
+        return redirect()->route('loginformasso');
         }
        } 
        Private function storeImage($image){

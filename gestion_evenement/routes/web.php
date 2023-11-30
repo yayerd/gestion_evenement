@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AssoLoginController;
 use App\Http\Controllers\Auth\AssoRegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\EvenementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +39,10 @@ Route::get('/loginform',[AssoLoginController::class, 'create'])->name('loginform
 Route::post('/login/asso',[AssoLoginController::class, 'store'])->name('loginAsso');
 
 // Evenement
+Route::get('/evenement/form', [EvenementController::class, 'create'])->name('formevenement');
+Route::post('/evenement/ajouter', [EvenementController::class, 'store'])->name('ajouterevenement');
+Route::get('/evenement/lister', [EvenementController::class, 'index'])->name('listerevenement'); 
+// Route::delete('evenement/{id}', [EvenementController::class, 'destroy'])->name('supprimerEvenement');
+// Route::put('evenement/{id}/modifier', [EvenementController::class, 'update'])->name('modifEvenement');
+// Route::get('evenement/{id}/voir', [EvenementController::class, 'show'])->name('voirEvenement');
+// Route::get('evenement/{id}/editer', [EvenementController::class, 'edit'])->name('editerEven');

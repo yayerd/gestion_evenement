@@ -21,6 +21,7 @@ class Evenement extends Model
         'image',
         'statut',
         'date_limite',
+        'associations_id',
         
     ];
 }
