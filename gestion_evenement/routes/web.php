@@ -38,11 +38,11 @@ Route::post('/register/asso',[AssoRegisterController::class, 'store'])->name('re
 Route::get('/loginform',[AssoLoginController::class, 'create'])->name('loginformasso');
 Route::post('/login/asso',[AssoLoginController::class, 'store'])->name('loginAsso');
 
-// Evenement
+// CRUD Evenement
 Route::get('/evenement/form', [EvenementController::class, 'create'])->name('formevenement');
 Route::post('/evenement/ajouter', [EvenementController::class, 'store'])->name('ajouterevenement');
 Route::get('/evenement/lister', [EvenementController::class, 'index'])->name('listerevenement'); 
-// Route::delete('evenement/{id}', [EvenementController::class, 'destroy'])->name('supprimerEvenement');
-// Route::put('evenement/{id}/modifier', [EvenementController::class, 'update'])->name('modifEvenement');
-// Route::get('evenement/{id}/voir', [EvenementController::class, 'show'])->name('voirEvenement');
-// Route::get('evenement/{id}/editer', [EvenementController::class, 'edit'])->name('editerEven');
+Route::get('/evenement/{id}', [EvenementController::class, 'voirdetails'])->name('detailsevenement'); 
+Route::get('/evenement/{id}/editer', [EvenementController::class, 'edit'])->name('editerevenement');
+Route::put('/evenement/{id}/modifier', [EvenementController::class, 'update'])->name('modifEvenement');
+Route::delete('/evenement/{id}', [EvenementController::class, 'destroy'])->name('supprimerEvenement');
