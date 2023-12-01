@@ -38,6 +38,7 @@ class AssoLoginController extends Controller
 
         // dd(Auth::guard('association')->attempt($check));
         if (Auth::guard('association')->attempt($check)) {
+            
         //    return view('evenements.ajouter');
         return redirect()->route('formevenement');
         } else {

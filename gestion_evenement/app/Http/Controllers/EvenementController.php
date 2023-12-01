@@ -116,7 +116,7 @@ class EvenementController extends Controller
         $evenement->date_limite = $request->date_limite;
         $evenement->association_id=Auth::guard('association')->user()->id;
         $evenement->update();
-        return "Evenement modifié";
+        return "Evenement modifié"; 
         // return view('evenements.lister');
         // return redirect('/evenements/'.$request->id);
 

@@ -46,7 +46,9 @@ class RegisterController extends Controller
             // dd($validated);
             $user = User::create($validated);
             $user->save();
-            return 'Inscription reussie';
+            // return 'Inscription reussie';
+        return redirect()->route('login');
+
         } catch (\Exception $e) {
             dd($e->getMessage());
         }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -20,7 +21,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -28,7 +29,27 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            // 'reservation' => 'sometimes',
+            'nombre_place' => 'required',
+            // 'date_reservation' => 'required',
+        ]);
+        $reservation = new Reservation();
+        $autoref = uniqid();
+        $reservation->reference = $request->$autoref = uniqid() ;
+        $reservation->nombre_place = $request->nombre_place ;
+        // $reservation->date_reservation = $request->date_reservation ;
+        $reservation->user_id = Auth::guard('web')->user()->id;
+        $reservation->evenement_id = $request->evenement_id; 
+        
+        // dd($request);
+        $reservation->save();
+        // return "Réservé";
+        // return back();
+        return redirect('/evenement/lister');
+
+
     }
 
     /**
