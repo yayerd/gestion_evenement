@@ -1,7 +1,7 @@
 @extends('layouts.template')
 @section('mon_contenu')
     <div class="flex items-center justify-center h-screen">
-        <form class=" max-w-screen-md mx-auto border-solid border-2 rounded-md py-3 px-7 shadow-lg my-8" action="/evenement/{{$evenement->id}}/modifier" method="POST" enctype="multipart/form-data" novalidate>
+        <form class=" max-w-screen-md mx-auto border-solid border-2 rounded-md py-3 px-7 shadow-lg my-8" action="/evenement/modifier/{{$evenement->id}}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <header class="bg-white shadow">
                 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">

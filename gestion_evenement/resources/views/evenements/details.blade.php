@@ -19,10 +19,10 @@
             <!-- Contenu à droite -->
             <div class="ml-4 w-2/3 py-3">
               <h3 class="text-sm text-gray-700">
-                <a href="#">
+                {{-- <a href="#"> --}}
                   <span aria-hidden="true" class="  py-3 absolute inset-0"></span>
                   Titre de l'évènement: {{ $evenement->libelle }}
-                </a>
+                {{-- </a> --}}
               </h3>
               <div class="py-1 mt-1 text-sm text-gray-500">Description de l'évènement: {{ $evenement->description }}</div>
               <div class=" py-1 text-sm font-medium text-gray-900">A la date: {{ $evenement->date_evenement }}</div>
@@ -30,10 +30,10 @@
               <div class="py-1 text-sm font-medium text-gray-900">Date limite des réservations: {{ $evenement->date_limite }} </div>
             
               <div class="block py-6 mt-8 ">
-                <a href="/evenement/{{ $evenement->id }}/editer" class="text-xl text-white p-4 bg-sky-700 ">
+                <a href="{{ '/evenement/editer/'.$evenement->id }}"  class="text-xl text-white p-4 bg-sky-700 ">
                 Modifier 
                 </a>
-                <a href="/evenement/{{ $evenement->id }}" class="text-xl m-3 text-white p-4 bg-red-600">
+                <a href={{ "/evenement/$evenement->id/supprimer" }} class="text-xl m-3 text-white p-4 bg-red-600">
                 Supprimer
                 </a>
               </div>

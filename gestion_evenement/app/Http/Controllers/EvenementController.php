@@ -77,11 +77,11 @@ class EvenementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit($id, Evenement $evenement)
     {
-        $evenements = Evenement::find($id);
-        // $associations = Association::all();
-        return view('evenements.editer', ['evenements' => $evenements]);
+        $evenement = Evenement::find($id);
+        $associations = Association::all();
+        return view('evenements.editer', compact('associations', 'evenement'));
     }
 
     /**
@@ -91,7 +91,7 @@ class EvenementController extends Controller
     {
         $request->validate([
             'libelle' => 'required|max:255',
-            'image' => 'required',
+            'image' => 'sometimes',
             'description' => 'required',
             'date_evenement' => 'required',
             'statut' => 'required',
@@ -103,9 +103,9 @@ class EvenementController extends Controller
         $evenement->date_evenement = $request->date_evenement;
         $evenement->description = $request->description;
         if ($request->file('image')) {
-                if (File::exists(public_path('images/' . $evenement->image))) {
-                    File::delete(public_path('images/' . $evenement->image));
-                }
+                // if (File::exists(public_path('images/' . $evenement->image))) {
+                //     File::delete(public_path('images/' . $evenement->image));
+                // }
             $file = $request->file('image');
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('images'), $filename);
@@ -115,9 +115,10 @@ class EvenementController extends Controller
         $evenement->statut = $request->statut;
         $evenement->date_limite = $request->date_limite;
         $evenement->association_id=Auth::guard('association')->user()->id;
-         $evenement->update();
-        // return "Evenement modifié";
-        return redirect()->route('/evenement/'.$request->id);
+        $evenement->update();
+        return "Evenement modifié";
+        // return view('evenements.lister');
+        // return redirect('/evenements/'.$request->id);
 
 
     }
@@ -125,8 +126,12 @@ class EvenementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Evenement $evenement)
+    public function destroy($id, Evenement $evenement)
     {
-        //
+        $evenement = Evenement::findOrfail($id);
+        $evenement->delete();
+        return 'Evenement supprimé';
+        // return redirect('/evenement/lister');
+        // return view('evenements.lister');
     }
 }

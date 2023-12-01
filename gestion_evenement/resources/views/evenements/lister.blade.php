@@ -20,10 +20,10 @@
             <!-- Contenu à droite -->
             <div class="ml-4 w-2/3 py-3">
               <h3 class="text-sm text-gray-700">
-                <a href="#">
+                {{-- <a href="#"> --}}
                   <span aria-hidden="true" class="  py-3 absolute inset-0"></span>
                   Titre de l'évènement: {{ $evenement->libelle }}
-                </a>
+                {{-- </a> --}}
               </h3>
               <div class="py-1 text-sm font-medium text-gray-900">Statut: {{ $evenement->statut }} </div>
               <div class="py-1 text-sm font-medium text-gray-900">Date limite des réservations: {{ $evenement->date_limite }} </div>

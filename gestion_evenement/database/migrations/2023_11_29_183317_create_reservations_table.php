@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('reference');
             $table->date('date_reservation');
-            $table->enum('statut', ['accepte','refuse']);
+            // $table->enum('statut', ['accepte','refuse']);
             $table->integer('nombre_place');
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(Evenement::class)->constrained()->onDelete('cascade');

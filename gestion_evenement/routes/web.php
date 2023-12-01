@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AssoRegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,11 @@ Route::get('/evenement/form', [EvenementController::class, 'create'])->name('for
 Route::post('/evenement/ajouter', [EvenementController::class, 'store'])->name('ajouterevenement');
 Route::get('/evenement/lister', [EvenementController::class, 'index'])->name('listerevenement'); 
 Route::get('/evenement/{id}', [EvenementController::class, 'voirdetails'])->name('detailsevenement'); 
-Route::get('/evenement/{id}/editer', [EvenementController::class, 'edit'])->name('editerevenement');
-Route::put('/evenement/{id}/modifier', [EvenementController::class, 'update'])->name('modifEvenement');
-Route::delete('/evenement/{id}', [EvenementController::class, 'destroy'])->name('supprimerEvenement');
+Route::get('/evenement/editer/{id}', [EvenementController::class, 'edit'])->name('editerevenement');
+Route::post('/evenement/modifier/{id}', [EvenementController::class, 'update'])->name('modifierevenement');
+Route::get('/evenement/{id}/supprimer', [EvenementController::class, 'destroy'])->name('supprimerEvenement');
+
+// Réservation 
+Route::get('/reservation/form', [ReservationController::class, 'create'])->name('formreservation');
+Route::post('/reservation/ajouter', [ReservationController::class, 'store'])->name('ajouterreservation');
+Route::get('/reservation/lister', [ReservationController::class, 'index'])->name('listereservation');

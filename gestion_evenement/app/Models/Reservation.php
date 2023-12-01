@@ -19,9 +19,9 @@ class Reservation extends Model
     }
     protected $fillable = [
         'reference',
-        'date_reservation',
-        'statut',
+        // 'statut',
         'nombre_place',
+        'date_reservation',
         
     ];
 }
