@@ -11,9 +11,10 @@ class ReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $reservations = Reservation::where('evenement_id', $id)->get();
+        return view('evenements.reservations', compact('reservations'));
     }
 
     /**
@@ -29,7 +30,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             // 'reservation' => 'sometimes',
             'nombre_place' => 'required',
@@ -37,19 +38,17 @@ class ReservationController extends Controller
         ]);
         $reservation = new Reservation();
         $autoref = uniqid();
-        $reservation->reference = $request->$autoref = uniqid() ;
-        $reservation->nombre_place = $request->nombre_place ;
+        $reservation->reference = $request->$autoref = uniqid();
+        $reservation->nombre_place = $request->nombre_place;
         // $reservation->date_reservation = $request->date_reservation ;
         $reservation->user_id = Auth::guard('web')->user()->id;
-        $reservation->evenement_id = $request->evenement_id; 
-        
+        $reservation->evenement_id = $request->evenement_id;
+
         // dd($request);
         $reservation->save();
         // return "Réservé";
         // return back();
         return redirect('/evenement/lister');
-
-
     }
 
     /**
@@ -82,5 +81,15 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         //
+    }
+
+
+    public function decline($id, Reservation $reservation)
+    {
+        $reservation = Reservation::findOrfail($id); 
+        // dd($reservation);
+        $reservation->update(['statut' => 'refuse']);
+
+        return redirect()->back();
     }
 }

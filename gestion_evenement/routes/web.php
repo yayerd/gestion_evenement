@@ -51,4 +51,5 @@ Route::get('/evenement/{id}/supprimer', [EvenementController::class, 'destroy'])
 // Réservation 
 // Route::get('/reservation/form', [ReservationController::class, 'create'])->name('formreservation');
 Route::post('/reservation/ajouter', [ReservationController::class, 'store'])->name('ajouterreservation');
-Route::get('/reservation/lister', [ReservationController::class, 'index'])->name('listereservation');
+Route::get('/reservation/{id}/liste', [ReservationController::class, 'index'])->name('listereservation');
+Route::get('/reservation/{id}/decliner', [ReservationController::class, 'decline'])->name('declinerreservation');
